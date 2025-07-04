@@ -1,0 +1,15 @@
+device: cuda
+cudnn_benchmark: true
+use_amp: true
+batch_size: 256
+num_workers: 8
+pin_memory: true
+mcts:
+  simulations: 100
+  cpuct: 1.0
+model:
+  initial: small
+  upgraded:
+    blocks: 16
+    channels: 128
+selfplay_games: 5000
