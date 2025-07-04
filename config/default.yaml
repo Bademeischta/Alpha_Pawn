@@ -1,0 +1,12 @@
+device: cuda
+cudnn_benchmark: true
+use_amp: true
+batch_size: 512
+num_workers: 8
+pin_memory: true
+lr: 1e-3
+weight_decay: 1e-4
+epochs: 10
+model:
+  blocks: 8
+  channels: 64

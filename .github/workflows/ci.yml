@@ -1,0 +1,23 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install flake8 pydocstyle pytest
+          pip install -r requirements.txt
+      - name: Lint
+        run: |
+          flake8 src tests
+          pydocstyle src
+      - name: Test
+        run: pytest --maxfail=1 --disable-warnings -q
