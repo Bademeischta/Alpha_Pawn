@@ -1,0 +1,8 @@
+model:
+  channels: 64
+  residual_blocks: 6
+mcts:
+  simulations: 100
+  cpuct: 2.0
+selfplay:
+  max_moves: 160
