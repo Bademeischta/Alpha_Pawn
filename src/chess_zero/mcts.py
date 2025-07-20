@@ -45,7 +45,6 @@ class MCTS:
                     ),
                     key=lambda x: x[0]
                 )
-                node = node
                 search_path.append(node)
 
             # Expansion
