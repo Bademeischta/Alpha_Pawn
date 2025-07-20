@@ -36,6 +36,7 @@ def main():
     args = parser.parse_args()
     if args.uci:
         print('UCI mode not yet implemented')
+        return
     else:
         res = play_against_stockfish(args.engine, 'stockfish')
         print(res)
