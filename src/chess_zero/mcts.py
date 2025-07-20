@@ -63,10 +63,11 @@ class MCTS:
         return root
 
     def _expand(self, node: Node):
-        for move in node.board.legal_moves:
+        moves = list(node.board.legal_moves)
+        for move in moves:
             new_board = node.board.copy()
             new_board.push(move)
-            node.children[move] = Node(new_board, parent=node, prior=1/len(list(node.board.legal_moves)))
+            node.children[move] = Node(new_board, parent=node, prior=1 / len(moves))
 
     def _evaluate(self, node: Node):
         tensor = board_to_tensor(node.board).unsqueeze(0)
@@ -74,7 +75,8 @@ class MCTS:
             policy, value = self.model(tensor)
         # simple prior distribution over legal moves
         policy = torch.softmax(policy[0], dim=0)
-        for move, p in zip(node.board.legal_moves, policy[: node.board.legal_moves.count()]):
+        moves = list(node.board.legal_moves)
+        for move, p in zip(moves, policy[: len(moves)]):
             if move in node.children:
                 node.children[move].prior = p.item()
         return value.item()

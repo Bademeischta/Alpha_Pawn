@@ -34,7 +34,7 @@ Alle Komponenten sind in **Python 3 + PyTorch 2.2 (CUDA 12.8)** gehalten und lau
 
 ## 3. Projektstruktur
 
-````
+```
 
 chess-selfplay-rl/
 ├─ README.md          ← diese Datei
@@ -56,7 +56,7 @@ chess-selfplay-rl/
 ├─ selfplay/…      ← .pt-Dateien (Bretter, Policy, Value)
 └─ checkpoints/    ← gespeicherte Netze
 
-````
+```
 
 ---
 
@@ -66,7 +66,7 @@ chess-selfplay-rl/
 2. **Skelett-Netz initialisieren**  
    ```bash
    python -m chess_zero.model --init checkpoints/000.pt
-````
+```
 
 3. **Erste 100 Selbstpartien erzeugen**
 
